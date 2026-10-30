@@ -8,9 +8,9 @@ console.log(etudiants);
 console.log('premier: ', etudiants[0].nom);
 console.log('effectif :', etudiants.length);
 function noteValide(note) {
-    return Number.isFinite(note) && note >= 0 && note <= 20 ;
+    return Number.isFinite(note) && (note) >= 0 && (note) <= 20 ;
 }
-console.log(noteValide(16));
+console.log(noteValide(-2));
 console.log(noteValide(25));
 function moyenne(notes) {
     if (notes.length === 0) return null;

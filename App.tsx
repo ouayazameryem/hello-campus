@@ -1,24 +1,23 @@
 import { View, Text, StyleSheet } from 'react-native';
 
- const etudiants = [ 
-{ id: 1, nom: 'Amine', note: 16 },
-{ id: 2, nom: 'Youssef', note: 8 },
-{ id: 3, nom: 'Salma', note: 14 },
-{ id: 4, nom: 'Omar', note: 12 }
- ];
- const total = etudiants.reduce((s, e) => s + e.note, 0);
- const moyenne = total / etudiants.length;
- 
+const produits = [
+    {id:1, nom: 'Clavier', categorie: 'accessoires', prix: 120, stock: 5},
+    {id:2, nom: 'Souris', categorie: 'accessoires', prix: 80, stock: 8},
+    {id:3, nom: 'Ecran', categorie: 'informatique', prix: 900, stock: 0},
+    {id:4, nom: 'Casque', categorie: 'accessoires', prix: 240, stock: 3}
+];
+const disponibles = produits.filter((p) => p.stock > 0);
+ const valeurTotale = produits.reduce((somme, p) => {
+  return somme + (p.prix * p.stock);
+}, 0);
 export default function App() {
 return (
 <View style={styles.ecran}>
-<Text style={styles.titre}>Notes des étudiants</Text>
-<Text style={styles.moyenne}>Moyenne : {moyenne}/20</Text>
-{etudiants.map((e) => (
-<Text key={e.id} style={styles.ligne}>
-{e.nom} : {e.note}/20
-</Text>
-))}
+<Text style={styles.titre}>Produits d'un catalougue</Text>
+
+<Text style={styles.info}>Nombre disponibles : {disponibles.length}</Text>
+<Text style={styles.info}>Valeur totale du stock : {valeurTotale} MAD</Text>
+
 </View>
 );
 }
@@ -26,10 +25,10 @@ const styles = StyleSheet.create({
 
 ecran: { flex: 1, justifyContent: 'center', padding:26, 
 backgroundColor: '#F2F7FD' },
-titre: { fontSize: 24, fontWeight: 'bold', color: '#00235C',
-marginBottom: 16 },
-moyenne: { fontSize: 19, marginBottom: 20, color: '#003796' },
-ligne: { fontSize: 17, paddingVertical: 8, color: '#00235C' }
+titre: { fontSize: 26, fontWeight: 'bold', color: '#00235C',
+marginBottom: 20 },
+info: { fontSize: 19, marginBottom: 12, color: '#003796' },
+
 });
 
 
